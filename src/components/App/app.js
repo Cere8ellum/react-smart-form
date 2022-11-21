@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../Form/form";
-import SmartForm from "../Form/form";
+import SmartForm from "../SmartForm/smartForm";
 import FormInput from "../FormInput/formInput";
 import styles from "./app.scss";
 
@@ -21,13 +21,26 @@ function App() {
         <FormInput
           name="email"
           placeholder="Email"
-          rules={{ required: "This is required." }}
+          rules={{
+            required: "Field email is required",
+            pattern: {
+              value:
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              message: "Please enter a valid email",
+            },
+          }}
         />
         <FormInput
           name="password"
           placeholder="Пароль"
           type="password"
-          rules={{ required: "This is required." }}
+          rules={{
+            required: "Field password is required.",
+            minLength: {
+              value: 8,
+              message: "At least 8 symbols",
+            },
+          }}
         />
       </SmartForm>
     </div>

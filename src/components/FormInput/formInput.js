@@ -1,15 +1,11 @@
 import styles from "./formInput.scss";
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function FormInput({ register, rules, name, error, ...rest }) {
+export default function FormInput({ register, name, rules, errors, ...rest }) {
   return (
     <>
-      <input
-        {...register(name, { required: "This is required." })}
-        {...rest}
-        className={styles.input}
-      />
-      {error?.name && <div className={styles.error}>{error.name.message}</div>}
+      <input {...register(name, rules)} {...rest} className={styles.input} />
+      {errors && <div className={styles.error}>{errors.message}</div>}
     </>
   );
 }

@@ -15,11 +15,11 @@ export default function Form({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("email", { required: "This is required." })} />
+      <input {...register("email", { required: "This is required_1." })} />
       {errors?.["email"] && (
         <div className={styles.error}>{errors.email.message}</div>
       )}
-      <input {...register("password", { required: "This is required." })} />
+      <input {...register("password", { required: "This is required_2." })} />
       {errors?.["password"] && (
         <div className={styles.error}>{errors.password.message}</div>
       )}
